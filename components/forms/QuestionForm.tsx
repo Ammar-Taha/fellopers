@@ -1,9 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { X } from "lucide-react";
 import { Controller, type Resolver, useForm } from "react-hook-form";
 
+import TagCard from "@/components/cards/TagCard";
 import Editor from "@/components/editor";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +14,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { POPULAR_TAGS } from "@/constants/right-sidebar";
 import { AskQuestionSchema, type AskQuestionValues } from "@/lib/validations";
 
 const QuestionForm = () => {
@@ -150,21 +151,27 @@ const QuestionForm = () => {
               />
               {field.value.length > 0 ? (
                 <div className="mt-2.5 flex-start flex-wrap gap-2.5">
-                  {field.value.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      onClick={() =>
-                        field.onChange(
-                          field.value.filter((item) => item !== tag),
-                        )
-                      }
-                      className="flex items-center gap-2 rounded-md background-light800_dark300 px-4 py-2 subtle-medium text-light400_light500 uppercase"
-                    >
-                      {tag}
-                      <X className="size-3.5" aria-hidden />
-                    </button>
-                  ))}
+                  {field.value.map((tag) => {
+                    const popularTag = POPULAR_TAGS.find(
+                      (item) => item.name.toLowerCase() === tag.toLowerCase(),
+                    );
+
+                    return (
+                      <TagCard
+                        key={tag}
+                        _id={popularTag?._id ?? tag}
+                        name={tag}
+                        compact
+                        mark={popularTag?.mark}
+                        markClassName={popularTag?.markClassName}
+                        onRemove={() =>
+                          field.onChange(
+                            field.value.filter((item) => item !== tag),
+                          )
+                        }
+                      />
+                    );
+                  })}
                 </div>
               ) : null}
               {fieldState.invalid ? (

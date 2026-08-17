@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { X } from "lucide-react";
 
 import ROUTES from "@/constants/routes";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,7 @@ type TagCardProps = {
   mark?: string;
   markClassName?: string;
   compact?: boolean;
+  onRemove?: () => void;
 };
 
 const TagCard = ({
@@ -21,9 +23,15 @@ const TagCard = ({
   mark,
   markClassName,
   compact = false,
+  onRemove,
 }: TagCardProps) => {
   const badge = (
-    <span className="flex items-center gap-1.5 rounded-md background-light800_dark300 px-4 py-2 subtle-medium text-light400_light500 uppercase">
+    <span
+      className={cn(
+        "flex items-center rounded-md background-light800_dark300 px-4 py-2 subtle-medium text-light400_light500 uppercase",
+        onRemove ? "gap-2" : "gap-1.5",
+      )}
+    >
       {mark ? (
         <span
           className={cn(
@@ -35,8 +43,21 @@ const TagCard = ({
         </span>
       ) : null}
       {name}
+      {onRemove ? <X className="size-3.5" aria-hidden /> : null}
     </span>
   );
+
+  if (onRemove) {
+    return (
+      <button
+        type="button"
+        onClick={onRemove}
+        aria-label={`Remove ${name} tag`}
+      >
+        {badge}
+      </button>
+    );
+  }
 
   if (compact) {
     return <Link href={ROUTES.TAG(_id)}>{badge}</Link>;
