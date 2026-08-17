@@ -553,6 +553,128 @@ html.dark {
   border-color: var(--dark-400) !important;
 }
 
+.dark .dark-editor,
+.dark .mdxeditor-popup-container {
+  --basePageBg: var(--dark-300);
+  --baseBg: var(--dark-400);
+  --baseText: var(--light-700);
+  --baseTextContrast: var(--light-900);
+}
+
+.mdxeditor-toolbar [role="combobox"] {
+  border: 1px solid var(--light-700) !important;
+  border-radius: 8px !important;
+  background-color: var(--light-900) !important;
+  color: var(--dark-400) !important;
+}
+
+.dark .mdxeditor-toolbar [role="combobox"] {
+  border-color: color-mix(
+    in oklch,
+    var(--primary-500) 45%,
+    var(--dark-400)
+  ) !important;
+  background-color: var(--dark-200) !important;
+  color: var(--light-900) !important;
+}
+
+.mdxeditor-select-content {
+  max-height: min(360px, 70vh);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid var(--light-700) !important;
+  border-radius: 8px !important;
+  background-color: var(--light-900) !important;
+  color: var(--dark-400) !important;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 8%);
+}
+
+.dark .mdxeditor-select-content {
+  border-color: color-mix(
+    in oklch,
+    var(--primary-500) 45%,
+    var(--dark-400)
+  ) !important;
+  background-color: var(--dark-300) !important;
+  color: var(--light-900) !important;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 45%);
+}
+
+.mdxeditor-select-content [role="option"] {
+  color: inherit;
+}
+
+.dark .mdxeditor-select-content [role="option"] {
+  color: var(--light-900);
+}
+
+.mdxeditor-select-content [role="option"][data-highlighted],
+.mdxeditor-select-content [role="option"][data-state="checked"] {
+  background-color: var(--light-800) !important;
+}
+
+.dark .mdxeditor-select-content [role="option"][data-highlighted],
+.dark .mdxeditor-select-content [role="option"][data-state="checked"] {
+  background-color: var(--dark-400) !important;
+}
+
+.markdown-editor [class*="codeMirrorWrapper"] {
+  margin-top: 0.5rem;
+  border-color: var(--light-700) !important;
+  background-color: var(--light-900);
+}
+
+.dark .markdown-editor [class*="codeMirrorWrapper"] {
+  border-color: var(--dark-400) !important;
+  background-color: #2e3235;
+}
+
+.markdown-editor [class*="codeMirrorToolbar"] [role="combobox"] {
+  border: 1px solid var(--light-700) !important;
+  border-radius: 8px !important;
+  background-color: var(--light-900) !important;
+  color: var(--dark-400) !important;
+}
+
+.dark .markdown-editor [class*="codeMirrorToolbar"] [role="combobox"] {
+  border-color: color-mix(
+    in oklch,
+    var(--primary-500) 45%,
+    var(--dark-400)
+  ) !important;
+  background-color: var(--dark-200) !important;
+  color: var(--light-900) !important;
+}
+
+.dark .markdown-editor .cm-editor {
+  background-color: #2e3235 !important;
+  color: #ddd !important;
+}
+
+.dark .markdown-editor .cm-gutters {
+  background-color: #292d30 !important;
+  color: #808080 !important;
+  border-right: 1px solid #ffffff10 !important;
+}
+
+.dark .markdown-editor .cm-activeLine {
+  background-color: #b9d2ff30 !important;
+}
+
+.dark .markdown-editor .cm-activeLineGutter {
+  background-color: #b9d2ff30 !important;
+}
+
+.dark .markdown-editor .cm-cursor,
+.dark .markdown-editor .cm-dropCursor {
+  border-left-color: #ddd !important;
+}
+
+.dark .markdown-editor .cm-content {
+  caret-color: #ddd !important;
+  color: #ddd !important;
+}
+
 .markdown a {
   color: var(--link-100);
 }
@@ -585,7 +707,8 @@ code {
 }
 
 [data-lexical-editor="true"] {
-  height: 350px !important;
+  min-height: 350px !important;
+  max-height: 640px;
   overflow-y: auto !important;
 }
 

@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
+    "@codemirror/language-data": "^6.5.2",
     "@hookform/resolvers": "^5.9.0",
+    "@mdxeditor/editor": "^4.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cm6-theme-basic-dark": "^0.2.0",
     "lucide-react": "^1.31.0",
     "next": "16.3.1",
     "next-auth": "5.0.0-beta.32",

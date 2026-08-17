@@ -33,3 +33,22 @@ export const SignUpSchema = z.object({
 
 export type SignInValues = z.infer<typeof SignInSchema>;
 export type SignUpValues = z.infer<typeof SignUpSchema>;
+
+export const AskQuestionSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Title must be at least 5 characters.")
+    .max(130, "Title cannot exceed 130 characters."),
+  content: z.string().min(20, "Content must be at least 20 characters."),
+  tags: z
+    .array(
+      z
+        .string()
+        .min(1, "Tag cannot be empty.")
+        .max(15, "Tag cannot exceed 15 characters."),
+    )
+    .min(1, "Please add at least one tag.")
+    .max(5, "You can add a maximum of 5 tags."),
+});
+
+export type AskQuestionValues = z.infer<typeof AskQuestionSchema>;
