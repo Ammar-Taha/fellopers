@@ -6,11 +6,12 @@ const ROUTES = {
   COLLECTIONS: "/collections",
   JOBS: "/jobs",
   TAGS: "/tags",
+  TAG: (id: string) => `/tags/${id}`,
   COMMUNITY: "/community",
   ASK_QUESTION: "/ask-question",
+  QUESTION: (id: string) => `/question/${id}`,
   /*
   PROFILE: "/profile",
-  QUESTION: "/question",
   SEARCH: "/search",
   SETTINGS: "/settings",
   ADMIN: "/admin",
