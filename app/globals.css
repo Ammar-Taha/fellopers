@@ -159,6 +159,7 @@ html.dark {
   --background-image-auth-light: url("/images/auth-light.svg");
 
   --breakpoint-xs: 420px;
+  --breakpoint-nav: 1090px;
 
   --color-sidebar-ring: var(--sidebar-ring);
 
